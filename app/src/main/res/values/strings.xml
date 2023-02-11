@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">GithubTubes</string>
-
-    <string name="tab_1">Followers</string>
-    <string name="tab_2">Following</string>
-</resources>
