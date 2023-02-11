@@ -2,6 +2,7 @@ package com.zulfabasmallahagustyn.myapplication.viewmodel;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -21,10 +22,10 @@ import retrofit2.Response;
 
 public class UserViewModel extends ViewModel {
 
-    private MutableLiveData<ArrayList<ModelSearchData>> modelSearchMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<ArrayList<ModelFollow>> modelFollowersMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<ArrayList<ModelFollow>> modelFollowingMutableLiveData = new MutableLiveData<>();
-    private MutableLiveData<ModelUser> modelUserMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<ModelSearchData>> modelSearchMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<ModelFollow>> modelFollowersMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<ArrayList<ModelFollow>> modelFollowingMutableLiveData = new MutableLiveData<>();
+    private final MutableLiveData<ModelUser> modelUserMutableLiveData = new MutableLiveData<>();
     public static String strApiKey = "mau API KEY? Tonton video tutorialnya ya^^";
 
     //method search user
@@ -34,7 +35,7 @@ public class UserViewModel extends ViewModel {
         Call<ModelSearch> call = apiService.searchUser(strApiKey, query);
         call.enqueue(new Callback<ModelSearch>() {
             @Override
-            public void onResponse(Call<ModelSearch> call, Response<ModelSearch> response) {
+            public void onResponse(@NonNull Call<ModelSearch> call, @NonNull Response<ModelSearch> response) {
                 if (!response.isSuccessful()) {
                     Log.e("response", response.toString());
                 } else if (response.body() != null) {
@@ -44,7 +45,7 @@ public class UserViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ModelSearch> call, Throwable t) {
+            public void onFailure(@NonNull Call<ModelSearch> call, @NonNull Throwable t) {
                 Log.e("failure", t.toString());
             }
         });
@@ -57,7 +58,7 @@ public class UserViewModel extends ViewModel {
         call.enqueue(new Callback<ModelUser>() {
 
             @Override
-            public void onResponse(Call<ModelUser> call, Response<ModelUser> response) {
+            public void onResponse(@NonNull Call<ModelUser> call, @NonNull Response<ModelUser> response) {
                 if (!response.isSuccessful()) {
                     Log.e("response", response.toString());
                 } else if (response.body() != null) {
@@ -66,7 +67,7 @@ public class UserViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ModelUser> call, Throwable t) {
+            public void onFailure(@NonNull Call<ModelUser> call, @NonNull Throwable t) {
                 Log.e("failure", t.toString());
             }
         });
@@ -79,7 +80,7 @@ public class UserViewModel extends ViewModel {
         Call<ArrayList<ModelFollow>> call = apiService.followersUser(strApiKey, strUsername);
         call.enqueue(new Callback<ArrayList<ModelFollow>>() {
             @Override
-            public void onResponse(Call<ArrayList<ModelFollow>> call, Response<ArrayList<ModelFollow>> response) {
+            public void onResponse(@NonNull Call<ArrayList<ModelFollow>> call, @NonNull Response<ArrayList<ModelFollow>> response) {
                 if (!response.isSuccessful()) {
                     Log.e("response", response.toString());
                 } else if (response.body() != null) {
@@ -88,7 +89,7 @@ public class UserViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ModelFollow>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<ModelFollow>> call, @NonNull Throwable t) {
                 Log.e("failure", t.toString());
             }
         });
@@ -101,7 +102,7 @@ public class UserViewModel extends ViewModel {
         Call<ArrayList<ModelFollow>> call = apiService.followingUser(strApiKey, strUsername);
         call.enqueue(new Callback<ArrayList<ModelFollow>>() {
             @Override
-            public void onResponse(Call<ArrayList<ModelFollow>> call, Response<ArrayList<ModelFollow>> response) {
+            public void onResponse(@NonNull Call<ArrayList<ModelFollow>> call, @NonNull Response<ArrayList<ModelFollow>> response) {
                 if (!response.isSuccessful()) {
                     Log.e("response", response.toString());
                 } else if (response.body() != null) {
@@ -110,7 +111,7 @@ public class UserViewModel extends ViewModel {
             }
 
             @Override
-            public void onFailure(Call<ArrayList<ModelFollow>> call, Throwable t) {
+            public void onFailure(@NonNull Call<ArrayList<ModelFollow>> call, @NonNull Throwable t) {
                 Log.e("failure", t.toString());
             }
         });

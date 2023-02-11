@@ -1,5 +1,6 @@
 package com.zulfabasmallahagustyn.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,19 +20,19 @@ import java.util.ArrayList;
 
 public class FollowAdapter extends RecyclerView.Adapter<FollowAdapter.FolowersViewHolder> {
 
-    private ArrayList<ModelFollow> modelFollowArrayList = new ArrayList<>();
-    private Context context;
+    private final ArrayList<ModelFollow> modelFollowArrayList = new ArrayList<>();
 
-    public FollowAdapter(Context context) {
-        this.context = context;
+    public FollowAdapter(Context ignoredContext) {
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setFollowList(ArrayList<ModelFollow> items) {
         modelFollowArrayList.clear();
         modelFollowArrayList.addAll(items);
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
     public FollowAdapter.FolowersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_data, parent, false);

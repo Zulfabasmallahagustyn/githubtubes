@@ -1,5 +1,6 @@
 package com.zulfabasmallahagustyn.myapplication.ui.activities;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -27,7 +28,6 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.zulfabasmallahagustyn.myapplication.database.DatabaseContract.FavoriteColoumn.TABLE_NAME;
 
@@ -47,6 +47,7 @@ public class DetailActivity extends AppCompatActivity {
     MaterialFavoriteButton imageFavorite;
     CollapsingToolbarLayout collapsingToolbarLayout;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

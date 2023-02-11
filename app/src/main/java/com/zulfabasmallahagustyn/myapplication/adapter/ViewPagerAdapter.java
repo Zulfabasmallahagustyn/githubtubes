@@ -1,8 +1,8 @@
 package com.zulfabasmallahagustyn.myapplication.adapter;
 
 import android.os.Bundle;
-import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -20,10 +20,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         this.modelSearchData = modelSearchData;
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable("modelSearchData", (Parcelable) modelSearchData);
+        bundle.putParcelable("modelSearchData", modelSearchData);
         Fragment fragment = null;
         switch (position) {
             case 0:
@@ -35,6 +36,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
                 fragment.setArguments(bundle);
                 break;
         }
+        assert fragment != null;
         return fragment;
     }
 

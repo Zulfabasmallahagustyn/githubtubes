@@ -44,6 +44,7 @@ public class FragmentFollowers extends Fragment {
         rvListFollowers = view.findViewById(R.id.rvListFollowers);
         layoutEmpty = view.findViewById(R.id.layoutEmpty);
 
+        assert this.getArguments() != null;
         modelSearchData = (ModelSearchData) this.getArguments().get("modelSearchData");
         if (modelSearchData != null) {
             strUsername = modelSearchData.getLogin();

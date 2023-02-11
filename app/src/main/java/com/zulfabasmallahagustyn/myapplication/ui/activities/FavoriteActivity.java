@@ -20,7 +20,6 @@ import java.util.ArrayList;
 public class FavoriteActivity extends AppCompatActivity {
 
     ArrayList<ModelUser> modelUserArrayList = new ArrayList<>();
-    private FavoriteHelper favoriteHelper;
     private FavoriteAdapter favoriteAdapter;
     Toolbar toolbar;
     ConstraintLayout layoutEmpty;
@@ -35,7 +34,7 @@ public class FavoriteActivity extends AppCompatActivity {
         layoutEmpty = findViewById(R.id.layoutEmpty);
         rvListFavoriteUser = findViewById(R.id.rvListFavoriteUser);
 
-        favoriteHelper = FavoriteHelper.getFavoriteHelper(FavoriteActivity.this);
+        FavoriteHelper favoriteHelper = FavoriteHelper.getFavoriteHelper(FavoriteActivity.this);
         favoriteHelper.open();
 
         toolbar.setTitle(null);
@@ -47,7 +46,7 @@ public class FavoriteActivity extends AppCompatActivity {
         rvListFavoriteUser.setLayoutManager(new LinearLayoutManager(this));
         rvListFavoriteUser.setAdapter(favoriteAdapter);
         rvListFavoriteUser.setHasFixedSize(true);
-        
+
         getDataFavorite();
     }
 

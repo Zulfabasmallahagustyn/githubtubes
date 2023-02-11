@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ModelSearchData implements ModelSearchData2 {
+public class ModelSearchData implements Parcelable {
 
     @SerializedName("login")
     private String login;

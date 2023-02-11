@@ -1,11 +1,13 @@
 package com.zulfabasmallahagustyn.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zulfabasmallahagustyn.myapplication.R;
@@ -16,18 +18,20 @@ import java.util.ArrayList;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewHolder> {
 
-    private ArrayList<ModelUser> modelUserArrayList = new ArrayList<>();
+    private final ArrayList<ModelUser> modelUserArrayList = new ArrayList<>();
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setFavoriteUserList(ArrayList<ModelUser> data) {
         this.modelUserArrayList.clear();
         this.modelUserArrayList.addAll(data);
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
     public FavoriteAdapter.FavoriteViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_data, parent, false);
-        return new FavoriteAdapter.FavoriteViewHolder(view);
+        return new FavoriteViewHolder(view);
     }
 
     @Override
@@ -55,7 +59,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         return modelUserArrayList.size();
     }
 
-    public class FavoriteViewHolder extends RecyclerView.ViewHolder {
+    public static class FavoriteViewHolder extends RecyclerView.ViewHolder {
         TextView tvUsername, tvUrl;
         ImageView imageUser;
 

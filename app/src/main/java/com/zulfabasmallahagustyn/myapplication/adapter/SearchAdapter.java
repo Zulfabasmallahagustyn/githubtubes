@@ -1,5 +1,6 @@
 package com.zulfabasmallahagustyn.myapplication.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,19 +22,21 @@ import java.util.ArrayList;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
 
-    private ArrayList<ModelSearchData> modelSearchDataList= new ArrayList<>();
-    private Context context;
+    private final ArrayList<ModelSearchData> modelSearchDataList= new ArrayList<>();
+    private final Context context;
 
     public SearchAdapter(Context context) {
         this.context = context;
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void setSearchUserList(ArrayList<ModelSearchData> items) {
         modelSearchDataList.clear();
         modelSearchDataList.addAll(items);
         notifyDataSetChanged();
     }
 
+    @NonNull
     @Override
     public SearchViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_data, parent, false);
@@ -51,7 +55,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         holder.tvUrl.setText(item.getHtmlUrl());
         holder.cvListUser.setOnClickListener(view -> {
             Intent intent = new Intent(context, DetailActivity.class);
-            intent.putExtra(DetailActivity.DETAIL_USER, (CharSequence) modelSearchDataList.get(position));
+            intent.putExtra(DetailActivity.DETAIL_USER, modelSearchDataList.get(position));
             context.startActivity(intent);
         });
 

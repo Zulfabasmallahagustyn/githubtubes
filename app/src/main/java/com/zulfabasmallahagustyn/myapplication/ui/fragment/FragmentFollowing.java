@@ -44,6 +44,7 @@ public class FragmentFollowing extends Fragment {
         rvListFollowing = view.findViewById(R.id.rvListFollowing);
         layoutEmpty = view.findViewById(R.id.layoutEmpty);
 
+        assert this.getArguments() != null;
         modelSearchData = (ModelSearchData) this.getArguments().get("modelSearchData");
         if (modelSearchData != null) {
             strUsername = modelSearchData.getLogin();

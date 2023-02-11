@@ -21,7 +21,7 @@ public class FavoriteHelper {
 
     private static final String DATABASE_TABLE = TABLE_NAME;
     private static DatabaseHelper favoriteDbHelper;
-    private static FavoriteHelper favoriteHelper;
+    private static volatile FavoriteHelper favoriteHelper;
     private static SQLiteDatabase db;
 
     public FavoriteHelper(Context context) {
@@ -75,18 +75,18 @@ public class FavoriteHelper {
         return arrayList;
     }
 
-    public long favoriteInsert(ModelUser userResponse) {
+    public void favoriteInsert(ModelUser userResponse) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID, userResponse.getId());
         contentValues.put(TITLE, userResponse.getLogin());
         contentValues.put(IMAGE, userResponse.getAvatarUrl());
         contentValues.put(URL, userResponse.getHtmlUrl());
 
-        return db.insert(DATABASE_TABLE, null, contentValues);
+        db.insert(DATABASE_TABLE, null, contentValues);
     }
 
-    public int favoriteDelete(String title) {
-        return db.delete(TABLE_NAME, TITLE + " = '" + title + "'", null);
+    public void favoriteDelete(String title) {
+        db.delete(TABLE_NAME, TITLE + " = '" + title + "'", null);
     }
 
     public Cursor cursorFavoriteGet() {

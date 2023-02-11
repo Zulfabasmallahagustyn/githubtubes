@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ModelFollow implements ModelFollow2 {
+public class ModelFollow implements Parcelable {
 
     @SerializedName("login")
     private String login;
@@ -14,7 +14,7 @@ public class ModelFollow implements ModelFollow2 {
     private String avatarUrl;
 
     @SerializedName("html_url")
-    private String htmlUrl;
+    private final String htmlUrl;
 
     public String getLogin() {
         return login;

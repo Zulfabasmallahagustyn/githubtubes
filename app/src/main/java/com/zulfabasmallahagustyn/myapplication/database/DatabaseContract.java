@@ -1,5 +1,6 @@
 package com.zulfabasmallahagustyn.myapplication.database;
 
+import android.annotation.SuppressLint;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
@@ -7,7 +8,7 @@ import android.provider.BaseColumns;
 
 public class DatabaseContract {
 
-    public static final String PACKAGE = "com.azhar.githubusers";
+    public static final String PACKAGE = "com.zulfabasmallahagustyn.myapplication";
     public static final String SCHEME = "content";
 
     public static final class FavoriteColoumn implements BaseColumns {
@@ -19,10 +20,12 @@ public class DatabaseContract {
         public static final Uri FAVORITE_URI = new Uri.Builder().scheme(SCHEME).authority(PACKAGE).appendPath(TABLE_NAME).build();
     }
 
+    @SuppressLint("Range")
     public static String getFavorite(Cursor cursor, String column) {
         return cursor.getString(cursor.getColumnIndex(column));
     }
 
+    @SuppressLint("Range")
     public static int getIntFavorite(Cursor cursor, String column) {
         return cursor.getInt(cursor.getColumnIndex(column));
     }
